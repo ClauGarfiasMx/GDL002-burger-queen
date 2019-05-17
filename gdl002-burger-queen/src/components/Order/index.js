@@ -1,11 +1,25 @@
-import React from "react";
-// eslint-disable-next-line
+import React, { Component } from "react";
 import MenuBreakfast from "../MenuBreakfast";
 
-const Order = () => (
-  <div>
-    <h1>Order</h1>
-  </div>
-);
+class Order extends Component {
+  state = {};
+  render() {
+    return (
+      <div>
+        <MenuBreakfast />
+      </div>
+    );
+  }
+}
 
 export default Order;
+
+// const Order = () => (
+//   <div>
+//     <h1>Order</h1>
+//     <Counter />
+//     <Counter />
+//   </div>
+// );
+
+// export default Order;
