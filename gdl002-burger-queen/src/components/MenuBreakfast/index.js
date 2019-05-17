@@ -12,11 +12,12 @@ class MenuBreakfast extends Component {
   };
   render() {
     return (
-      <div>
+      <section>
+        <h2>Menú Desayuno</h2>
         {this.state.menu.map(counter => (
           <Counter key={counter.id} name={counter.name} value={counter.value} />
         ))}
-      </div>
+      </section>
     );
   }
 }
