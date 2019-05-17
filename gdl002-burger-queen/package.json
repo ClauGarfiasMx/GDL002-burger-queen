@@ -39,10 +39,10 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ClauGarfiasMx/gdl002-burger-queen.git"
+    "url": "git+https://github.com/ClauGarfiasMx/GDL002-burger-queen.git"
   },
   "bugs": {
-    "url": "https://github.com/ClauGarfiasMx/gdl002-burger-queen/issues"
+    "url": "https://github.com/ClauGarfiasMx/GDL002-burger-queen/issues"
   },
   "homepage": "https://ClauGarfiasMx.github.io/gdl002-burger-queen"
 }
