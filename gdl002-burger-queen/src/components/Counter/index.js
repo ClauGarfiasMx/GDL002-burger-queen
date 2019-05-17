@@ -5,7 +5,7 @@ class Counter extends Component {
   state = {
     item: this.props.name,
     count: this.props.value,
-    price:this.props.price
+    price: this.props.price
   };
   //   constructor() {
   //     super();
@@ -48,7 +48,7 @@ class Counter extends Component {
           action={this.reset}
           extraClassName="counter-btn"
         />
-         <label>{this.state.price}</label>
+        <label>{this.state.price}</label>
       </div>
     );
   }
