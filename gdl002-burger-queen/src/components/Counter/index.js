@@ -7,11 +7,11 @@ class Counter extends Component {
       <div>
         <label>{this.props.name}</label>
         <label>{this.props.price}</label>
-        <Button
+        {/* <Button
           name="+"
           action={this.props.handleIncrement}
           extraClassName="counter-btn"
-        />
+        /> */}
         <Button
           name="-"
           action={this.props.handleDecrement}

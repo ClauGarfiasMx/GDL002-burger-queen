@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Counter from "../Counter";
+import Button from "../Button";
 
 class MenuBreakfast extends Component {
   state = {
@@ -18,9 +19,10 @@ class MenuBreakfast extends Component {
     // subtotal: [(this.menu.subtotal = this.menu.value * this.menu.price)]
   };
 
-  handleIncrement = () => {
+  handleIncrement = id => {
+    console.log(id);
     const nextState = this.state;
-    nextState.menu[0].data.value++;
+    nextState.menu[id].data.value++;
     this.setState(nextState);
   };
   handleDecrement = () => {
@@ -42,18 +44,25 @@ class MenuBreakfast extends Component {
         <section>
           <h2>Menú Desayuno</h2>
           {this.state.menu.map(counter => (
-            <Counter
-              key={counter.id}
-              id={counter.id}
-              name={counter.data.name}
-              value={counter.data.value}
-              price={counter.data.price}
-              handleIncrement={this.handleIncrement}
-              handleDecrement={this.handleDecrement}
-              reset={this.reset}
-            />
+            <div>
+              <Counter
+                key={counter.id}
+                id={counter.id}
+                name={counter.data.name}
+                value={counter.data.value}
+                price={counter.data.price}
+                // handleIncrement={this.handleIncrement}
+                // handleDecrement={this.handleDecrement}
+                // reset={this.reset}
+              />
+              <Button
+                action={() => {
+                  this.handleIncrement(counter.id);
+                }}
+                name="++"
+              />
+            </div>
           ))}
-          {console.log(this.state)}
         </section>
         {/* <section>
           <h2>Orden</h2>
