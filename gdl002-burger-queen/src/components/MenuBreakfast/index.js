@@ -5,14 +5,14 @@ import Button from "../Button";
 class MenuBreakfast extends Component {
   state = {
     menu: [
-      { id: "b01", data: { name: "Café Americano", value: 0, price: 5 } },
-      { id: "b02", data: { name: "Café con Leche", value: 0, price: 7 } },
+      { id: "0", data: { name: "Café Americano", value: 0, price: 5 } },
+      { id: "1", data: { name: "Café con Leche", value: 0, price: 7 } },
       {
-        id: "b03",
+        id: "2",
         data: { name: "Jugo de Frutas Natural", value: 0, price: 10 }
       },
       {
-        id: "b04",
+        id: "3",
         data: { name: "Sandwich de Jamón y Queso", value: 0, price: 10 }
       }
     ]
@@ -20,21 +20,23 @@ class MenuBreakfast extends Component {
   };
 
   handleIncrement = id => {
-    console.log(id);
+    // console.log(this.state.menu[id]);
     const nextState = this.state;
     nextState.menu[id].data.value++;
     this.setState(nextState);
   };
-  handleDecrement = () => {
-    console.log("handleDecrement parent");
+  handleDecrement = id => {
     const nextState = this.state;
-    nextState.menu[0].data.value--;
+    if (this.state.menu[id].data.value <= 0) {
+      nextState.menu[id].data.value = 0;
+    } else {
+      nextState.menu[id].data.value--;
+    }
     this.setState(nextState);
   };
-  reset = () => {
-    console.log("reset parent");
+  reset = id => {
     const nextState = this.state;
-    nextState.menu.data.value = 0;
+    nextState.menu[id].data.value = 0;
     this.setState(nextState);
   };
 
@@ -60,6 +62,18 @@ class MenuBreakfast extends Component {
                   this.handleIncrement(counter.id);
                 }}
                 name="++"
+              />
+              <Button
+                action={() => {
+                  this.handleDecrement(counter.id);
+                }}
+                name="--"
+              />
+              <Button
+                action={() => {
+                  this.reset(counter.id);
+                }}
+                name="borrar"
               />
             </div>
           ))}
