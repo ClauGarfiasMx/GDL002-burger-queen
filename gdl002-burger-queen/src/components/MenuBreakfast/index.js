@@ -1,96 +1,94 @@
 import React, { Component } from "react";
 import Counter from "../Counter";
 import Button from "../Button";
+import { menuB } from "../Data/BreakfastMenu.json";
 
 class MenuBreakfast extends Component {
-  state = {
-    menu: [
-      {
-        index: "0",
-        data: { name: "Café Americano", value: 0, price: 5, subtotal: 0 }
-      },
-      {
-        index: "1",
-        data: { name: "Café con Leche", value: 0, price: 7, subtotal: 0 }
-      },
-      {
-        index: "2",
-        data: {
-          name: "Jugo de Frutas Natural",
-          value: 0,
-          price: 10,
-          subtotal: 0
-        }
-      },
-      {
-        index: "3",
-        data: {
-          name: "Sandwich de Jamón y Queso",
-          value: 0,
-          price: 10,
-          subtotal: 0
-        }
-      }
-    ]
-    // subtotal: [(this.menu.subtotal = this.menu.value * this.menu.price)]
-  };
+  constructor() {
+    super();
+    this.state = {
+      menuB,
+      table: 0,
+      total: 0
+    };
+  }
 
-  handleIncrement = id => {
-    // console.log(this.state.menu[id]);
+  handleIncrement = idx => {
     const nextState = this.state;
-    nextState.menu[id].data.value++;
+    nextState.menuB[idx].data.value++;
     this.setState(nextState);
   };
-  handleDecrement = id => {
+  handleDecrement = idx => {
     const nextState = this.state;
-    if (this.state.menu[id].data.value <= 0) {
-      nextState.menu[id].data.value = 0;
+    if (this.state.menuB[idx].data.value <= 0) {
+      nextState.menuB[idx].data.value = 0;
     } else {
-      nextState.menu[id].data.value--;
+      nextState.menuB[idx].data.value--;
     }
     this.setState(nextState);
   };
-  reset = id => {
+  reset = idx => {
     const nextState = this.state;
-    nextState.menu[id].data.value = 0;
+    nextState.menuB[idx].data.value = 0;
     this.setState(nextState);
   };
-  subtotal = id => {
+  subtotal = idx => {
     const nextState = this.state;
-    nextState.menu[id].data.subtotal =
-      nextState.menu[id].data.price * nextState.menu[id].data.value;
+    nextState.menuB[idx].data.subtotal =
+      nextState.menuB[idx].data.price * nextState.menuB[idx].data.value;
     this.setState(nextState);
+  };
+  onChange = event => {
+    return this.setState({ [event.target.name]: event.target.value });
   };
 
+  getTotal = () => {
+    return this.setState({ total: 10 });
+  };
+  getOrder = () => {
+    const order = {
+      items: this.state.menuB.filter(
+        value => this.state.menuB[value.idx].data.value > 0
+      ),
+      table: this.state.table,
+      total: this.getTotal()
+    };
+    console.log(order);
+  };
   render() {
     return (
       <main className="flex-row">
         <section>
           <h2>Menú Desayuno</h2>
-          {this.state.menu.map(counter => (
-            <div key={counter.index}>
+          <label>Mesa Núm:</label>
+          <input
+            name="table"
+            onChange={this.onChange}
+            type="text"
+            placeholder="# Mesa"
+          />
+          {this.state.menuB.map(counter => (
+            <div key={counter.idx}>
               <Counter
-                id={counter.id}
                 name={counter.data.name}
                 value={counter.data.value}
                 price={counter.data.price}
-                // handleIncrement={this.state.handleIncrement}
               />
               <Button
                 action={() => {
-                  this.handleIncrement(counter.index);
+                  this.handleIncrement(counter.idx);
                 }}
                 name="+"
               />
               <Button
                 action={() => {
-                  this.handleDecrement(counter.index);
+                  this.handleDecrement(counter.idx);
                 }}
                 name="-"
               />
               <Button
                 action={() => {
-                  this.reset(counter.index);
+                  this.reset(counter.idx);
                 }}
                 name="borrar"
               />
@@ -99,16 +97,22 @@ class MenuBreakfast extends Component {
         </section>
         <section>
           <h2>Orden</h2>
-          {this.state.menu.map(order => {
-            // console.log(order.data);
-            return (
-              <p key={order.index}>
-                {order.data.name}: {order.data.value} subtotal:
-                {order.data.price * order.data.value}
-              </p>
-            );
-          })}
+          {this.state.menuB
+            .filter(value => this.state.menuB[value.idx].data.value > 0)
+            .map(order => {
+              return (
+                <div key={order.idx}>
+                  <p>
+                    {order.data.name}: {order.data.value}
+                  </p>
+                  <p className="subtotalP">
+                    Sub-Tot: ${order.data.price * order.data.value}
+                  </p>
+                </div>
+              );
+            })}
           <p>Total:</p>
+          <Button action={() => this.getOrder()} name="Enviar" />
         </section>
       </main>
     );
