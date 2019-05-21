@@ -5,15 +5,31 @@ import Button from "../Button";
 class MenuBreakfast extends Component {
   state = {
     menu: [
-      { id: "0", data: { name: "Café Americano", value: 0, price: 5 } },
-      { id: "1", data: { name: "Café con Leche", value: 0, price: 7 } },
       {
-        id: "2",
-        data: { name: "Jugo de Frutas Natural", value: 0, price: 10 }
+        index: "0",
+        data: { name: "Café Americano", value: 0, price: 5, subtotal: 0 }
       },
       {
-        id: "3",
-        data: { name: "Sandwich de Jamón y Queso", value: 0, price: 10 }
+        index: "1",
+        data: { name: "Café con Leche", value: 0, price: 7, subtotal: 0 }
+      },
+      {
+        index: "2",
+        data: {
+          name: "Jugo de Frutas Natural",
+          value: 0,
+          price: 10,
+          subtotal: 0
+        }
+      },
+      {
+        index: "3",
+        data: {
+          name: "Sandwich de Jamón y Queso",
+          value: 0,
+          price: 10,
+          subtotal: 0
+        }
       }
     ]
     // subtotal: [(this.menu.subtotal = this.menu.value * this.menu.price)]
@@ -39,58 +55,61 @@ class MenuBreakfast extends Component {
     nextState.menu[id].data.value = 0;
     this.setState(nextState);
   };
+  subtotal = id => {
+    const nextState = this.state;
+    nextState.menu[id].data.subtotal =
+      nextState.menu[id].data.price * nextState.menu[id].data.value;
+    this.setState(nextState);
+  };
 
   render() {
     return (
-      <main>
+      <main className="flex-row">
         <section>
           <h2>Menú Desayuno</h2>
           {this.state.menu.map(counter => (
-            <div>
+            <div key={counter.index}>
               <Counter
-                key={counter.id}
                 id={counter.id}
                 name={counter.data.name}
                 value={counter.data.value}
                 price={counter.data.price}
-                // handleIncrement={this.handleIncrement}
-                // handleDecrement={this.handleDecrement}
-                // reset={this.reset}
+                // handleIncrement={this.state.handleIncrement}
               />
               <Button
                 action={() => {
-                  this.handleIncrement(counter.id);
+                  this.handleIncrement(counter.index);
                 }}
-                name="++"
+                name="+"
               />
               <Button
                 action={() => {
-                  this.handleDecrement(counter.id);
+                  this.handleDecrement(counter.index);
                 }}
-                name="--"
+                name="-"
               />
               <Button
                 action={() => {
-                  this.reset(counter.id);
+                  this.reset(counter.index);
                 }}
                 name="borrar"
               />
             </div>
           ))}
         </section>
-        {/* <section>
+        <section>
           <h2>Orden</h2>
-          {this.state.menu
-            .filter(value => this.state.menu[0].value > 0)
-            .map(order => {
-              return (
-                <p>
-                  {order.name}
-                  {order.value}
-                </p>
-              );
-            })}
-        </section> */}
+          {this.state.menu.map(order => {
+            // console.log(order.data);
+            return (
+              <p key={order.index}>
+                {order.data.name}: {order.data.value} subtotal:
+                {order.data.price * order.data.value}
+              </p>
+            );
+          })}
+          <p>Total:</p>
+        </section>
       </main>
     );
   }

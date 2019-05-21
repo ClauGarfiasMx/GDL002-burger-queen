@@ -5,9 +5,10 @@ class Counter extends Component {
   render() {
     return (
       <div>
-        <label>Item:{this.props.name} </label>
-        <label>Precio:{this.props.price} </label>
-        <label>Cantidad:{this.props.value} </label>
+        <p> Artículo: {this.props.name}</p>
+        <p> Precio: ${this.props.price}</p>
+        <p> Cantidad: ${this.props.value}</p>
+        {/* <Button action={this.props.handleIncrement} name="+" /> */}
         {/* <Button
           name="+"
           action={this.props.handleIncrement}

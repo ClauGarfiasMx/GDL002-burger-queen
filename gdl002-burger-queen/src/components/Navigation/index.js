@@ -4,7 +4,7 @@ import * as ROUTES from "../../constants/routes";
 
 const Navigation = () => (
   <nav>
-    <ul>
+    <ul className="flex-row">
       <li>
         <Link to={ROUTES.HOME}>Home</Link>
       </li>
