@@ -32,29 +32,33 @@ class MenuBreakfast extends Component {
     nextState.menuB[idx].data.value = 0;
     this.setState(nextState);
   };
-  subtotal = idx => {
+  getsubtotal = (idx, cant) => {
     const nextState = this.state;
-    nextState.menuB[idx].data.subtotal =
-      nextState.menuB[idx].data.price * nextState.menuB[idx].data.value;
+    nextState.menuB[idx].data.subtotal = cant;
     this.setState(nextState);
   };
   onChange = event => {
     return this.setState({ [event.target.name]: event.target.value });
   };
 
-  getTotal = () => {
-    return this.setState({ total: 10 });
+  getTotal = cant => {
+    return this.setState({ total: +cant });
   };
   getOrder = () => {
+    let itemArr = this.state.menuB.filter(
+      value => this.state.menuB[value.idx].data.value > 0
+    );
+    let suma = itemArr.reduce(function(res, e) {
+      return res + e.data.subtotal;
+    }, 0);
     const order = {
-      items: this.state.menuB.filter(
-        value => this.state.menuB[value.idx].data.value > 0
-      ),
+      items: itemArr,
       table: this.state.table,
-      total: this.getTotal()
+      total: suma
     };
     console.log(order);
   };
+  componentDidMount() {}
   render() {
     return (
       <main className="flex-row">
@@ -77,6 +81,11 @@ class MenuBreakfast extends Component {
               <Button
                 action={() => {
                   this.handleIncrement(counter.idx);
+
+                  this.getsubtotal(
+                    counter.idx,
+                    counter.data.value * counter.data.price
+                  );
                 }}
                 name="+"
               />
@@ -97,17 +106,18 @@ class MenuBreakfast extends Component {
         </section>
         <section>
           <h2>Orden</h2>
+
           {this.state.menuB
             .filter(value => this.state.menuB[value.idx].data.value > 0)
             .map(order => {
+              let subtotal = order.data.price * order.data.value;
+
               return (
                 <div key={order.idx}>
                   <p>
                     {order.data.name}: {order.data.value}
                   </p>
-                  <p className="subtotalP">
-                    Sub-Tot: ${order.data.price * order.data.value}
-                  </p>
+                  <p id="subtotalP">Sub-Tot: ${subtotal}</p>
                 </div>
               );
             })}
