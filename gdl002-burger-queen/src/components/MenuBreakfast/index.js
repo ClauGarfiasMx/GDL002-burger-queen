@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import Counter from "../Counter";
-import Button from "../Button";
+import Order from "./Order";
+import Menu from "./Menu";
 import { menuB } from "../Data/BreakfastMenu.json";
 
 class MenuBreakfast extends Component {
@@ -61,76 +61,23 @@ class MenuBreakfast extends Component {
     };
     console.log(order);
   };
-  componentDidMount() {}
+
   render() {
     return (
       <main className="flex-row">
-        <section>
-          <h2>Menú Desayuno</h2>
-          <label>Mesa Núm:</label>
-          <input
-            name="table"
-            onChange={this.onChange}
-            type="text"
-            placeholder="# Mesa"
-          />
-          {this.state.menuB.map(counter => (
-            <div key={counter.idx}>
-              <Counter
-                name={counter.data.name}
-                value={counter.data.value}
-                price={counter.data.price}
-              />
-              <Button
-                action={() => {
-                  this.handleIncrement(counter.idx);
+        <Menu
+          menuB={this.state.menuB}
+          handleDecrement={this.handleDecrement}
+          handleIncrement={this.handleIncrement}
+          getsubtotal={this.getsubtotal}
+          reset={this.reset}
+        />
 
-                  this.getsubtotal(
-                    counter.idx,
-                    counter.data.value * counter.data.price
-                  );
-                }}
-                name="+"
-              />
-              <Button
-                action={() => {
-                  this.handleDecrement(counter.idx);
-                  this.getsubtotal(
-                    counter.idx,
-                    counter.data.value * counter.data.price
-                  );
-                }}
-                name="-"
-              />
-              <Button
-                action={() => {
-                  this.reset(counter.idx);
-                }}
-                name="borrar"
-              />
-            </div>
-          ))}
-        </section>
-        <section>
-          <h2>Orden</h2>
-
-          {this.state.menuB
-            .filter(value => this.state.menuB[value.idx].data.value > 0)
-            .map(order => {
-              let subtotal = order.data.price * order.data.value;
-
-              return (
-                <div key={order.idx}>
-                  <p>
-                    {order.data.name}: {order.data.value}
-                  </p>
-                  <p id="subtotalP">Sub-Tot: ${subtotal}</p>
-                </div>
-              );
-            })}
-          <p>Total: ${this.sumTotal()}</p>
-          <Button action={() => this.getOrder()} name="Enviar" />
-        </section>
+        <Order
+          menuB={this.state.menuB}
+          sumTotal={this.sumTotal}
+          getOrder={this.getOrder}
+        />
       </main>
     );
   }
