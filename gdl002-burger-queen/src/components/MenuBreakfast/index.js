@@ -41,7 +41,7 @@ class MenuBreakfast extends Component {
     return this.setState({ [event.target.name]: event.target.value });
   };
 
-  getTotal = () => {
+  sumTotal = () => {
     let total = this.state.menuB
       .filter(value => this.state.menuB[value.idx].data.value > 0)
       .reduce((res, e) => {
@@ -49,6 +49,7 @@ class MenuBreakfast extends Component {
       }, 0);
     return total;
   };
+
   getOrder = () => {
     let itemArr = this.state.menuB.filter(
       value => this.state.menuB[value.idx].data.value > 0
@@ -56,7 +57,7 @@ class MenuBreakfast extends Component {
     const order = {
       items: itemArr,
       table: this.state.table,
-      total: this.getTotal()
+      total: this.sumTotal()
     };
     console.log(order);
   };
@@ -94,6 +95,10 @@ class MenuBreakfast extends Component {
               <Button
                 action={() => {
                   this.handleDecrement(counter.idx);
+                  this.getsubtotal(
+                    counter.idx,
+                    counter.data.value * counter.data.price
+                  );
                 }}
                 name="-"
               />
@@ -123,7 +128,7 @@ class MenuBreakfast extends Component {
                 </div>
               );
             })}
-          <p>Total: ${this.getTotal()}</p>
+          <p>Total: ${this.sumTotal()}</p>
           <Button action={() => this.getOrder()} name="Enviar" />
         </section>
       </main>
