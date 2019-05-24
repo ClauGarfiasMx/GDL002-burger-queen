@@ -64,20 +64,32 @@ class MenuBreakfast extends Component {
 
   render() {
     return (
-      <main className="flex-row">
-        <Menu
-          menuB={this.state.menuB}
-          handleDecrement={this.handleDecrement}
-          handleIncrement={this.handleIncrement}
-          getsubtotal={this.getsubtotal}
-          reset={this.reset}
-        />
-
-        <Order
-          menuB={this.state.menuB}
-          sumTotal={this.sumTotal}
-          getOrder={this.getOrder}
-        />
+      <main>
+        <div className="">
+          <h2>Desayuno</h2>
+          <label>Mesa Núm: </label>
+          <input
+            name="table"
+            onChange={this.onChange}
+            type="text"
+            placeholder="#mesa"
+          />
+        </div>
+        <div className="flex-row">
+          <Order
+            menuB={this.state.menuB}
+            sumTotal={this.sumTotal}
+            getOrder={this.getOrder}
+            getsubtotal={this.getsubtotal}
+          />
+          <Menu
+            menuB={this.state.menuB}
+            handleDecrement={this.handleDecrement}
+            handleIncrement={this.handleIncrement}
+            getsubtotal={this.getsubtotal}
+            reset={this.reset}
+          />
+        </div>
       </main>
     );
   }

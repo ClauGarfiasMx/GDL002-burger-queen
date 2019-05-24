@@ -1,30 +1,40 @@
-import React, { Component } from "react";
-// import Button from "../Button";
+import React from "react";
+import Button from "../Button";
 
-class Counter extends Component {
-  render() {
-    return (
+const Counter = props => {
+  return (
+    <div className="item">
+      <p>
+        {props.name} ${props.price}
+      </p>
+      <p className="cant">
+        Cant: {props.value}
+        {/* Sub-Tot: ${props.value * props.price} */}
+      </p>
       <div>
-        <p> Artículo: {this.props.name}</p>
-        <p> Precio: ${this.props.price}</p>
-        <p> Cantidad: {this.props.value}</p>
-        <label>Sub-Tot: ${this.props.value * this.props.price}</label>
-        <div>
-          {/* <Button
-            action={() => {
-              this.props.handleIncrement(this.props.idx);
-
-              this.props.getsubtotal(
-                this.props.idx,
-                this.props.data.value * this.props.data.price
-              );
-            }}
-            name="más"
-          /> */}
-        </div>
+        <Button
+          action={() => {
+            props.handleIncrement(props.idx);
+            props.getsubtotal(props.idx, props.value * props.price);
+          }}
+          name="más"
+        />
+        <Button
+          action={() => {
+            props.handleDecrement(props.idx);
+            props.getsubtotal(props.idx, props.value * props.price);
+          }}
+          name="menos"
+        />
+        <Button
+          action={() => {
+            props.reset(props.idx);
+          }}
+          name="borrar"
+        />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Counter;

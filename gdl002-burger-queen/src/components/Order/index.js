@@ -3,7 +3,10 @@ import MenuBreakfast from "../MenuBreakfast";
 import MenuMeals from "../MenuMeals";
 
 class Order extends Component {
-  state = {};
+  state = {
+    breakfast: 0,
+    meals: 1
+  };
   render() {
     return (
       <div>

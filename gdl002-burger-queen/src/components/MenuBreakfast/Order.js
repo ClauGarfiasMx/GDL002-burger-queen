@@ -5,25 +5,27 @@ const Order = props => {
   const menuB = props.menuB;
 
   return (
-    <section>
-      <h2>Orden</h2>
+    <section className="order">
+      <h3>Orden</h3>
+      <div className="order-box">
+        {menuB
+          .filter(value => menuB[value.idx].data.value > 0)
+          .map(order => {
+            let subtotal = order.data.price * order.data.value;
 
-      {menuB
-        .filter(value => menuB[value.idx].data.value > 0)
-        .map(order => {
-          let subtotal = order.data.price * order.data.value;
-
-          return (
-            <div key={order.idx}>
-              <p>
-                {order.data.name}: {order.data.value}
-              </p>
-              <p id="subtotalP">Sub-Tot: ${subtotal}</p>
-            </div>
-          );
-        })}
-      <p>Total: ${props.sumTotal()}</p>
-      <Button action={() => props.getOrder()} name="Enviar" />
+            return (
+              <React.Fragment className="">
+                <p>
+                  {order.data.value} {order.data.name}: ${subtotal}
+                </p>
+              </React.Fragment>
+            );
+          })}
+        <div className="total">
+          <p className>Total: ${props.sumTotal()}</p>
+          <Button action={() => props.getOrder()} name="Enviar" />
+        </div>
+      </div>
     </section>
   );
 };
