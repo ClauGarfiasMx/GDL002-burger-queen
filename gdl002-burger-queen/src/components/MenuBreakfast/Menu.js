@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../Button";
 import Counter from "../Counter";
 
 const Menu = props => {
@@ -7,22 +8,48 @@ const Menu = props => {
   return (
     <section className="menu">
       <h3>Menú Desayuno</h3>
-      <div className="flex-row-menu">
-        {menuB.map(counter => (
-          <React.Fragment key={counter.idx}>
-            <Counter
-              idx={counter.idx}
-              name={counter.data.name}
-              value={counter.data.value}
-              price={counter.data.price}
-              handleIncrement={props.handleIncrement}
-              handleDecrement={props.handleDecrement}
-              getsubtotal={props.getsubtotal}
-              reset={props.reset}
-            />
-          </React.Fragment>
-        ))}
-      </div>
+      {/* <label>Mesa Núm:</label>
+      <input
+        name="table"
+        onChange={props.onChange}
+        type="text"
+        placeholder="# Mesa"
+      /> */}
+      {menuB.map(counter => (
+        <div key={counter.idx} className="item">
+          <Counter
+            name={counter.data.name}
+            value={counter.data.value}
+            price={counter.data.price}
+          />
+          <Button
+            action={() => {
+              props.handleIncrement(counter.idx);
+              props.getsubtotal(
+                counter.idx,
+                counter.data.value * counter.data.price
+              );
+            }}
+            name="+"
+          />
+          <Button
+            action={() => {
+              props.handleDecrement(counter.idx);
+              props.getsubtotal(
+                counter.idx,
+                counter.data.value * counter.data.price
+              );
+            }}
+            name="-"
+          />
+          <Button
+            action={() => {
+              props.reset(counter.idx);
+            }}
+            name="borrar"
+          />
+        </div>
+      ))}
     </section>
   );
 };

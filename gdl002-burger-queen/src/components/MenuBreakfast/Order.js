@@ -14,17 +14,15 @@ const Order = props => {
             let subtotal = order.data.price * order.data.value;
 
             return (
-              <React.Fragment className="">
+              <div key={order.idx}>
                 <p>
-                  {order.data.value} {order.data.name}: ${subtotal}
+                  {order.data.value} - {order.data.name}: ${subtotal}
                 </p>
-              </React.Fragment>
+              </div>
             );
           })}
-        <div className="total">
-          <p className>Total: ${props.sumTotal()}</p>
-          <Button action={() => props.getOrder()} name="Enviar" />
-        </div>
+        <p>Total: ${props.sumTotal()}</p>
+        <Button action={() => props.getOrder()} name="Enviar" />
       </div>
     </section>
   );

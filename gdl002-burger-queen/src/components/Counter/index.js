@@ -3,26 +3,23 @@ import Button from "../Button";
 
 const Counter = props => {
   return (
-    <div className="item">
+    <div>
       <p>
         {props.name} ${props.price}
       </p>
-      <p className="cant">
-        Cant: {props.value}
-        {/* Sub-Tot: ${props.value * props.price} */}
-      </p>
+      <p className="cant">Cant: {props.value}</p>
       <div>
-        <Button
+        {/* <Button
           action={() => {
-            props.handleIncrement(props.idx);
             props.getsubtotal(props.idx, props.value * props.price);
+            props.handleIncrement(props.idx);
           }}
           name="más"
         />
         <Button
           action={() => {
-            props.handleDecrement(props.idx);
             props.getsubtotal(props.idx, props.value * props.price);
+            props.handleDecrement(props.idx);
           }}
           name="menos"
         />
@@ -31,7 +28,7 @@ const Counter = props => {
             props.reset(props.idx);
           }}
           name="borrar"
-        />
+        /> */}
       </div>
     </div>
   );
