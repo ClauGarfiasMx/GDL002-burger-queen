@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Firebase from "../Firebase";
 import Order from "./Order";
 import Menu from "./Menu";
 import { menuB } from "../Data/BreakfastMenu.json";
@@ -51,15 +52,24 @@ class MenuBreakfast extends Component {
   };
 
   getOrder = () => {
+    const db = Firebase.firestore();
+    db.settings({
+      timestampsInSnapshots: true
+    });
     let itemArr = this.state.menuB.filter(
       value => this.state.menuB[value.idx].data.value > 0
     );
-    const order = {
+    // const order = {
+    //   items: itemArr,
+    //   table: this.state.table,
+    //   total: this.sumTotal()
+    // };
+    const userRef = db.collection("orders").add({
       items: itemArr,
       table: this.state.table,
       total: this.sumTotal()
-    };
-    console.log(order);
+    });
+    // console.log(order);
   };
 
   render() {

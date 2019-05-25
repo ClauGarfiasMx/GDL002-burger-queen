@@ -1,5 +1,4 @@
 import React from "react";
-import Button from "../Button";
 
 const Counter = props => {
   return (
