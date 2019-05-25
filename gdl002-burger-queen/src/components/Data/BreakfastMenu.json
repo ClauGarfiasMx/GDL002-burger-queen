@@ -2,39 +2,31 @@
   "menuB": [
     {
       "idx": "0",
-      "data": {
-        "name": "Café Americano",
-        "value": 0,
-        "price": 5,
-        "subtotal": 0
-      }
+      "name": "Café Americano",
+      "price": 5,
+      "qty": 0,
+      "subtotal": 0
     },
     {
       "idx": "1",
-      "data": {
-        "name": "Café con Leche",
-        "value": 0,
-        "price": 7,
-        "subtotal": 0
-      }
+      "name": "Café con Leche",
+      "price": 7,
+      "qty": 0,
+      "subtotal": 0
     },
     {
       "idx": "2",
-      "data": {
-        "name": "Jugo de Frutas Natural",
-        "value": 0,
-        "price": 10,
-        "subtotal": 0
-      }
+      "name": "Jugo de Frutas Natural",
+      "price": 10,
+      "qty": 0,
+      "subtotal": 0
     },
     {
       "idx": "3",
-      "data": {
-        "name": "Sandwich de Jamón y Queso",
-        "value": 0,
-        "price": 10,
-        "subtotal": 0
-      }
+      "name": "Sandwich de Jamón y Queso",
+      "price": 10,
+      "qty": 0,
+      "subtotal": 0
     }
   ]
 }

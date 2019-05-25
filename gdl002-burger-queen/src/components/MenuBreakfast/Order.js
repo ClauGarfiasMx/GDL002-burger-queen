@@ -9,20 +9,26 @@ const Order = props => {
       <h3>Orden</h3>
       <div className="order-box">
         {menuB
-          .filter(value => menuB[value.idx].data.value > 0)
+          .filter(qty => menuB[qty.idx].qty > 0)
           .map(order => {
-            let subtotal = order.data.price * order.data.value;
+            let subtotal = order.price * order.qty;
 
             return (
               <div key={order.idx}>
                 <p>
-                  {order.data.value} - {order.data.name}: ${subtotal}
+                  {order.qty} - {order.name}: ${subtotal}
                 </p>
               </div>
             );
           })}
-        <p>Total: ${props.sumTotal()}</p>
-        <Button action={() => props.getOrder()} name="Enviar" />
+        <div className="total">
+          <p>Total: ${props.sumTotal()}</p>
+          <Button
+            action={() => props.getOrder()}
+            name="Enviar"
+            disabled={!props.table}
+          />
+        </div>
       </div>
     </section>
   );

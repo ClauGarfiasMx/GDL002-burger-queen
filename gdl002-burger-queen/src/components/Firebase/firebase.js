@@ -1,7 +1,7 @@
 import Firebase from "firebase";
 // import app from "firebase/app";
 // import "firebase/auth";
-import "firebase/firestore";
+// import "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -34,5 +34,4 @@ const firebaseConfig = {
 //   doPasswordUpdate = password => this.auth.currentUser.updatePassword(password);
 // }
 Firebase.initializeApp(firebaseConfig);
-
 export default Firebase;
