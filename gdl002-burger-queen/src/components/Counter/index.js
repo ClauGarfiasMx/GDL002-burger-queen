@@ -6,7 +6,7 @@ const Counter = props => {
       <p>
         {props.name} ${props.price}
       </p>
-      <p className="cant">Cant: {props.value}</p>
+      <p className="cant">Cant: {props.qty}</p>
       <div>
         {/* <Button
           action={() => {

@@ -3,6 +3,8 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
+  font-size: 1.5rem;
+  line-height: 1.75rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0.5rem;
@@ -13,50 +15,106 @@ code {
     monospace;
 }
 
+button {
+  border-radius: 5px;
+}
+
 .flex-row {
   display: flex;
   flex-direction: row;
 }
 
 nav li {
+  font-size: 1rem;
   margin-right: 1.5rem;
 }
 
 .menu {
+  width: 60%;
   padding: 1rem;
   display: inline-block;
 }
+
+.item-div {
+  overflow-y: scroll;
+  height: 30rem;
+}
 .item {
+  text-align: center;
   padding: 5px;
-  width: 12rem;
-  height: 9rem;
+  width: 15rem;
+  height: 12.5rem;
   margin: 0.5rem;
   font-weight: bold;
   float: left;
   border: 1px solid #b3b3b3;
+  border-radius: 5px;
+}
+
+.item div {
+  height: 50%;
+}
+.item button {
+  padding: 0.75rem 1.5rem;
+  width: 4rem;
+  margin: 1rem 0.15rem 0.15rem 0.15rem;
 }
 
 .cant {
   font-weight: 100;
+  font-size: 1rem;
 }
 .order {
-  width: 50%;
+  width: 40%;
   padding: 1rem;
   display: inline-block;
 }
 .order-box {
   padding: 5px;
-  width: 85%;
-
-  margin: 0.5rem;
+  /* width: 100%; */
+  margin: 0.75rem 0;
+  min-height: 5rem;
+  background-color: #f5f5f575;
   border: 1px solid #b3b3b3;
+  border-radius: 5px;
 }
 .order-box p {
+  font-size: 1.25rem;
+  font-weight: 300;
   border-bottom: 1px solid #b3b3b3;
 }
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0.25rem;
+  align-items: center;
+}
 .total p {
-  border: none;
+  margin: 0;
   font-weight: bold;
+}
+
+.total button {
+  padding: 0.75rem 2rem;
+}
+
+.table-box {
+  display: flex;
+  flex-direction: column;
+}
+.table-box label {
+  font-size: 1.15rem;
+}
+.table-box input {
+  font-size: 1.25rem;
+  border: 1px solid #b3b3b3;
+  border-radius: 5px;
+  width: 3.5rem;
+}
+.notes {
+  width: 100% !important;
+  min-height: 3rem;
 }
 
 @media screen and (max-width: 600px) {
@@ -66,6 +124,9 @@ nav li {
   }
   .order {
     width: 85%;
+  }
+  .menu {
+    width: 95%;
   }
   .order-box {
     width: 100%;

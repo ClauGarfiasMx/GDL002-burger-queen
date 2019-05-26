@@ -10,6 +10,7 @@ class MenuBreakfast extends Component {
     this.state = {
       menuB,
       table: "",
+      notes: "",
       total: 0
     };
   }
@@ -38,8 +39,11 @@ class MenuBreakfast extends Component {
     nextState.menuB[idx].subtotal = cant;
     this.setState(nextState);
   };
-  onChange = event => {
+  onChangeTable = event => {
     return this.setState({ table: event.target.value });
+  };
+  onChangeNotes = event => {
+    return this.setState({ notes: event.target.value });
   };
 
   sumTotal = () => {
@@ -59,8 +63,10 @@ class MenuBreakfast extends Component {
     let itemArr = this.state.menuB.filter(
       value => this.state.menuB[value.idx].qty > 0
     );
-    const userRef = db.collection("orders").add({
+    // const userRef =
+    db.collection("orders").add({
       items: itemArr,
+      notes: this.state.notes,
       table: this.state.table,
       total: this.sumTotal()
     });
@@ -69,23 +75,28 @@ class MenuBreakfast extends Component {
   render() {
     return (
       <main>
-        <div className="">
+        <h2>Desayuno</h2>
+
+        {/* <div className="table-box">
           <h2>Desayuno</h2>
-          <label>Mesa Núm: </label>
+          <label>Mesa No: </label>
           <input
-            onChange={this.onChange}
+            onChangeTable={this.onChangeTable}
             type="text"
             placeholder="#mesa"
             value={this.state.table}
           />
-        </div>
+        </div> */}
         <div className="flex-row">
           <Order
+            onChangeTable={this.onChangeTable}
+            table={this.state.table}
+            onChangeNotes={this.onChangeNotes}
+            notes={this.state.notes}
             menuB={this.state.menuB}
             sumTotal={this.sumTotal}
             getOrder={this.getOrder}
             getsubtotal={this.getsubtotal}
-            table={this.state.table}
           />
           <Menu
             menuB={this.state.menuB}

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Component } from "react";
+import Firebase from "../Firebase";
 
 const Kitchen = () => (
   <div>

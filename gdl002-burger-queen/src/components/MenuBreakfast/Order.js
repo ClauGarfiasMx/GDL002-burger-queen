@@ -7,6 +7,17 @@ const Order = props => {
   return (
     <section className="order">
       <h3>Orden</h3>
+      <div className="table-box">
+        <label>Mesa No: </label>
+        <input onChange={props.onChangeTable} type="text" value={props.table} />
+        <label>Notas para el Chef: </label>
+        <input
+          className="notes"
+          onChange={props.onChangeNotes}
+          type="text"
+          value={props.notes}
+        />
+      </div>
       <div className="order-box">
         {menuB
           .filter(qty => menuB[qty.idx].qty > 0)
@@ -21,14 +32,14 @@ const Order = props => {
               </div>
             );
           })}
-        <div className="total">
-          <p>Total: ${props.sumTotal()}</p>
-          <Button
-            action={() => props.getOrder()}
-            name="Enviar"
-            disabled={!props.table}
-          />
-        </div>
+      </div>
+      <div className="total">
+        <p>Total: ${props.sumTotal()}</p>
+        <Button
+          action={() => props.getOrder()}
+          name="Enviar"
+          disabled={!props.table}
+        />
       </div>
     </section>
   );
