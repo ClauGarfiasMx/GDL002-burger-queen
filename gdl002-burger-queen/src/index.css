@@ -67,7 +67,6 @@ button {
   font-family: "Fjalla One", sans-serif;
   text-transform: uppercase;
   font-size: 1.25rem;
-  line-height: 0;
   padding: 0.75rem 1rem;
 }
 
@@ -181,6 +180,7 @@ nav a:hover {
 
 .order-box button {
   padding: 0.75rem;
+  line-height: 0;
   margin: 0.25rem 0.15rem;
   border: 1px solid #484848;
 }
@@ -193,9 +193,9 @@ nav a:hover {
 }
 .order-cant {
   font-family: "Lora", serif;
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   border: 1px solid #484848;
-  padding: 0.5rem 0.75rem;
+  padding: 0.65rem 0.75rem 0.4rem 0.75rem;
   border-radius: 5px;
   margin: 0.25rem 0.15rem;
 }

@@ -35,7 +35,8 @@ class Orders extends Component {
     return (
       <div>
         <h3>Pedidos</h3>
-        <Button name="Hi" action={this.getOrders} />
+        <Button name="Hello there!" action={this.getOrders} />
+        <p>This isn't working yet, sorry for the inconvenience!</p>
       </div>
     );
   }
