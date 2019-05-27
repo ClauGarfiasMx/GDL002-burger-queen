@@ -27,8 +27,14 @@ const Order = props => {
             return (
               <div key={order.idx}>
                 <p>
+                  <Button
+                    action={() => {
+                      props.reset(order.idx);
+                    }}
+                    imgsrc={require("../../assets/garbage.png")}
+                  />
                   {order.qty} - {order.name}: ${subtotal}
-                </p>
+                </p>{" "}
               </div>
             );
           })}

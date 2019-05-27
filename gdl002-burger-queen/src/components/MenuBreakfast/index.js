@@ -65,13 +65,13 @@ class MenuBreakfast extends Component {
     let itemArr = this.state.menuB.filter(
       value => this.state.menuB[value.idx].qty > 0
     );
-    // const userRef =
-    db.collection("orders").add({
+    const userRef = db.collection("orders").add({
       items: itemArr,
       notes: this.state.notes,
       table: this.state.table,
       total: this.sumTotal()
     });
+    // .then(this.reset());
   };
 
   render() {
@@ -82,17 +82,6 @@ class MenuBreakfast extends Component {
             <h1>Ordenar</h1>
           </div>
         </header>
-
-        {/* <div className="table-box">
-          <h2>Desayuno</h2>
-          <label>Mesa No: </label>
-          <input
-            onChangeTable={this.onChangeTable}
-            type="text"
-            placeholder="#mesa"
-            value={this.state.table}
-          />
-        </div> */}
         <div className="flex-row">
           <Order
             onChangeTable={this.onChangeTable}
@@ -103,6 +92,7 @@ class MenuBreakfast extends Component {
             sumTotal={this.sumTotal}
             getOrder={this.getOrder}
             getsubtotal={this.getsubtotal}
+            reset={this.reset}
           />
           <Menu
             menuB={this.state.menuB}
