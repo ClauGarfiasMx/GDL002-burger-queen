@@ -9,10 +9,17 @@ class MenuBreakfast extends Component {
     super();
     this.state = {
       menuB,
-      table: "",
+      done: false,
       notes: "",
+      orderID: "",
+      table: "",
       total: 0
     };
+  }
+  initialState() {
+    this.state.menuB.map(e => (menuB[e.idx].qty = 0));
+    let initial = { menuB, table: "", notes: "", total: 0 };
+    return initial;
   }
   componentDidMount() {
     document.body.classList.remove("home-container");
@@ -31,6 +38,7 @@ class MenuBreakfast extends Component {
     }
     this.setState(nextState);
   };
+
   reset = idx => {
     const nextState = this.state;
     nextState.menuB[idx].qty = 0;
@@ -50,7 +58,7 @@ class MenuBreakfast extends Component {
 
   sumTotal = () => {
     let total = this.state.menuB
-      .filter(value => this.state.menuB[value.idx].qty > 0)
+      .filter(qty => this.state.menuB[qty.idx].qty > 0)
       .reduce((res, e) => {
         return res + e.subtotal;
       }, 0);
@@ -65,13 +73,20 @@ class MenuBreakfast extends Component {
     let itemArr = this.state.menuB.filter(
       value => this.state.menuB[value.idx].qty > 0
     );
-    const userRef = db.collection("orders").add({
-      items: itemArr,
-      notes: this.state.notes,
-      table: this.state.table,
-      total: this.sumTotal()
-    });
-    // .then(this.reset());
+
+    db.collection("orders")
+      .add({
+        done: this.state.done,
+        items: itemArr,
+        notes: this.state.notes,
+        table: this.state.table,
+        total: this.sumTotal()
+      })
+      .then(docRef => {
+        this.setState({ orderID: docRef.id });
+        console.log(this.state.orderID);
+      })
+      .then(() => this.setState({ ...this.initialState() }));
   };
 
   render() {
@@ -93,6 +108,8 @@ class MenuBreakfast extends Component {
             getOrder={this.getOrder}
             getsubtotal={this.getsubtotal}
             reset={this.reset}
+            handleIncrement={this.handleIncrement}
+            handleDecrement={this.handleDecrement}
           />
           <Menu
             menuB={this.state.menuB}

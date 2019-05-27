@@ -10,7 +10,7 @@ const Button = props => {
     >
       {props.name}
 
-      <img src={props.imgsrc} />
+      <img src={props.imgsrc} alt={props.imgalt} />
     </button>
   );
 };

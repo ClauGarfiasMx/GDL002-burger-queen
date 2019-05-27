@@ -2,10 +2,10 @@ import React from "react";
 
 const Counter = props => {
   return (
-    <div>
-      <p>
+    <div className="item">
+      <div>
         {props.name} ${props.price}
-      </p>
+      </div>
       <p className="cant">Cant: {props.qty}</p>
       <div>
         {/* <Button

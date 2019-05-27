@@ -29,12 +29,29 @@ const Order = props => {
                 <p>
                   <Button
                     action={() => {
+                      props.handleDecrement(order.idx);
+                      props.getsubtotal(order.idx, order.qty * order.price);
+                    }}
+                    imgsrc={require("../../assets/minus.png")}
+                    imgalt="plus icon"
+                  />
+                  <span className="order-cant"> {order.qty} </span>
+                  <Button
+                    action={() => {
+                      props.handleIncrement(order.idx);
+                      props.getsubtotal(order.idx, order.qty * order.price);
+                    }}
+                    imgsrc={require("../../assets/add.png")}
+                    imgalt="plus icon"
+                  />
+                  <Button
+                    action={() => {
                       props.reset(order.idx);
                     }}
                     imgsrc={require("../../assets/garbage.png")}
                   />
-                  {order.qty} - {order.name}: ${subtotal}
-                </p>{" "}
+                  ~ {order.name}: ${subtotal}
+                </p>
               </div>
             );
           })}

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Firebase from "../Firebase";
 import Orders from "./Orders";
 
 // const Kitchen = () => (

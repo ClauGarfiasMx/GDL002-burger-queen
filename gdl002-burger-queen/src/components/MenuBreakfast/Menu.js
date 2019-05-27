@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../Button";
+// import Button from "../Button";
 import Counter from "../Counter";
 
 const Menu = props => {
@@ -10,18 +10,26 @@ const Menu = props => {
       <h3>Menú Desayuno</h3>
       <div className="item-container">
         {menuB.map(counter => (
-          <div key={counter.idx} className="item">
+          <div
+            key={counter.idx}
+            // className="item"
+            onClick={() => {
+              props.handleIncrement(counter.idx);
+              props.getsubtotal(counter.idx, counter.qty * counter.price);
+            }}
+          >
             <Counter
               name={counter.name}
               qty={counter.qty}
               price={counter.price}
             />
-            <Button
+            {/* <Button
               action={() => {
                 props.handleIncrement(counter.idx);
                 props.getsubtotal(counter.idx, counter.qty * counter.price);
               }}
               imgsrc={require("../../assets/add.png")}
+              imgalt="plus icon"
             />
             <Button
               action={() => {
@@ -29,6 +37,7 @@ const Menu = props => {
                 props.getsubtotal(counter.idx, counter.qty * counter.price);
               }}
               imgsrc={require("../../assets/minus.png")}
+              imgalt="minus icon"
               // icon={require("../../assets/minus.png")}
             />
             <Button
@@ -36,7 +45,8 @@ const Menu = props => {
                 props.reset(counter.idx);
               }}
               imgsrc={require("../../assets/garbage.png")}
-            />
+              imgalt="garbage icon"
+            /> */}
           </div>
         ))}
       </div>
