@@ -14,7 +14,9 @@ class MenuBreakfast extends Component {
       total: 0
     };
   }
-
+  componentDidMount() {
+    document.body.classList.remove("home-container");
+  }
   handleIncrement = idx => {
     const nextState = this.state;
     nextState.menuB[idx].qty++;
@@ -75,7 +77,11 @@ class MenuBreakfast extends Component {
   render() {
     return (
       <main>
-        <h2>Desayuno</h2>
+        <header>
+          <div className="opacity">
+            <h1>Ordenar</h1>
+          </div>
+        </header>
 
         {/* <div className="table-box">
           <h2>Desayuno</h2>

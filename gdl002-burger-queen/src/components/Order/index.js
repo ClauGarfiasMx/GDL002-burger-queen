@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import MenuBreakfast from "../MenuBreakfast";
-import MenuMeals from "../MenuMeals";
+// import MenuMeals from "../MenuMeals";
 
 class Order extends Component {
   state = {
@@ -11,7 +11,7 @@ class Order extends Component {
     return (
       <div>
         <MenuBreakfast />
-        <MenuMeals />
+        {/* <MenuMeals /> */}
       </div>
     );
   }

@@ -8,7 +8,7 @@ const Menu = props => {
   return (
     <section className="menu">
       <h3>Menú Desayuno</h3>
-      <div className="item-div">
+      <div className="item-container">
         {menuB.map(counter => (
           <div key={counter.idx} className="item">
             <Counter
@@ -21,20 +21,21 @@ const Menu = props => {
                 props.handleIncrement(counter.idx);
                 props.getsubtotal(counter.idx, counter.qty * counter.price);
               }}
-              name="+"
+              imgsrc={require("../../assets/add.png")}
             />
             <Button
               action={() => {
                 props.handleDecrement(counter.idx);
                 props.getsubtotal(counter.idx, counter.qty * counter.price);
               }}
-              name="-"
+              imgsrc={require("../../assets/minus.png")}
+              // icon={require("../../assets/minus.png")}
             />
             <Button
               action={() => {
                 props.reset(counter.idx);
               }}
-              name="x"
+              imgsrc={require("../../assets/garbage.png")}
             />
           </div>
         ))}

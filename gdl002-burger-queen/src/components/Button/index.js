@@ -9,6 +9,8 @@ const Button = props => {
       onClick={props.action}
     >
       {props.name}
+
+      <img src={props.imgsrc} />
     </button>
   );
 };

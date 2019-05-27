@@ -1,13 +1,58 @@
+@import url("https://fonts.googleapis.com/css?family=Lora:400,700|Roboto+Condensed:400,700&display=swap");
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+  font-family: "Lora", serif;
   font-size: 1.5rem;
   line-height: 1.75rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0.5rem;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto Condensed", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  padding: 2rem 0 3rem 1rem;
+  color: #fff;
+}
+
+header {
+  background-image: url("https://images.pexels.com/photos/2271106/pexels-photo-2271106.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.home-container {
+  background-image: url("https://images.pexels.com/photos/2271106/pexels-photo-2271106.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.opacity {
+  background: #00000061;
+}
+.main-title {
+  font-family: "Lora", serif;
+  text-transform: none;
+  background-color: #000000a1;
+  font-weight: 500;
+  padding: 1rem 3rem;
+}
+
+hr {
+  border-top: 1px solid #e4e4e4;
+  border-bottom: none;
 }
 
 code {
@@ -16,17 +61,59 @@ code {
 }
 
 button {
-  border-radius: 5px;
+  border-radius: 3px;
+  background-color: #484848;
+  color: #ffff;
+  border: none;
+  font-family: "Roboto Condensed", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  line-height: 0;
+  padding: 0.75rem 1rem;
+}
+
+button:hover {
+  background-color: #ffbc05;
+  border: none;
+}
+
+button img {
+  height: 1.75rem;
 }
 
 .flex-row {
   display: flex;
   flex-direction: row;
 }
+.flex-center {
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 nav li {
-  font-size: 1rem;
+  font-size: 1.05rem;
   margin-right: 1.5rem;
+  list-style-type: none;
+  font-family: "Roboto Condensed", sans-serif;
+  text-transform: uppercase;
+}
+
+nav a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 700;
+}
+
+nav a:hover {
+  color: #c0c0c0;
 }
 
 .menu {
@@ -35,7 +122,7 @@ nav li {
   display: inline-block;
 }
 
-.item-div {
+.item-container {
   overflow-y: scroll;
   height: 30rem;
 }
@@ -45,17 +132,18 @@ nav li {
   width: 15rem;
   height: 12.5rem;
   margin: 0.5rem;
-  font-weight: bold;
+  font-weight: 400;
   float: left;
   border: 1px solid #b3b3b3;
   border-radius: 5px;
+  font-size: 1.45rem;
 }
 
 .item div {
   height: 50%;
 }
 .item button {
-  padding: 0.75rem 1.5rem;
+  /* padding: 0.35rem 1.25rem; */
   width: 4rem;
   margin: 1rem 0.15rem 0.15rem 0.15rem;
 }
@@ -70,11 +158,10 @@ nav li {
   display: inline-block;
 }
 .order-box {
-  padding: 5px;
-  /* width: 100%; */
+  padding: 1rem;
   margin: 0.75rem 0;
   min-height: 5rem;
-  background-color: #f5f5f575;
+  background-color: #fffefb;
   border: 1px solid #b3b3b3;
   border-radius: 5px;
 }
@@ -90,13 +177,15 @@ nav li {
   padding: 0.75rem 0.25rem;
   align-items: center;
 }
-.total p {
+.total h4 {
+  padding: 1rem 2rem 1rem 0;
+  border-bottom: 5px solid #b3b3b3;
   margin: 0;
-  font-weight: bold;
 }
 
 .total button {
-  padding: 0.75rem 2rem;
+  padding: 0.5rem 2rem 0.75rem 2rem;
+  line-height: inherit;
 }
 
 .table-box {
@@ -104,17 +193,25 @@ nav li {
   flex-direction: column;
 }
 .table-box label {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
 }
 .table-box input {
+  font-family: "Lora", serif;
   font-size: 1.25rem;
   border: 1px solid #b3b3b3;
   border-radius: 5px;
   width: 3.5rem;
+  padding: 0.5rem;
 }
-.notes {
-  width: 100% !important;
-  min-height: 3rem;
+.table-box textarea {
+  font-size: 1rem;
+  resize: none;
+  padding: 0.5rem;
+  font-family: "Lora", serif;
+  font-weight: 300;
+  min-height: 5rem;
+  border: 1px solid #b3b3b3;
+  border-radius: 5px;
 }
 
 @media screen and (max-width: 600px) {

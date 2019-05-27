@@ -6,12 +6,12 @@ const Order = props => {
 
   return (
     <section className="order">
-      <h3>Orden</h3>
+      <h3>Pedido</h3>
       <div className="table-box">
         <label>Mesa No: </label>
         <input onChange={props.onChangeTable} type="text" value={props.table} />
         <label>Notas para el Chef: </label>
-        <input
+        <textarea
           className="notes"
           onChange={props.onChangeNotes}
           type="text"
@@ -34,7 +34,7 @@ const Order = props => {
           })}
       </div>
       <div className="total">
-        <p>Total: ${props.sumTotal()}</p>
+        <h4>Total: ${props.sumTotal()}</h4>
         <Button
           action={() => props.getOrder()}
           name="Enviar"
