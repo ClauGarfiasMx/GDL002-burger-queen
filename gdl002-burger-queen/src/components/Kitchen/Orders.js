@@ -10,36 +10,80 @@ class Orders extends Component {
     };
   }
 
-  getOrders() {
-    const db = Firebase.firestore();
+  // getOrders() {
+  //   const db = Firebase.firestore();
+  //   let arr = [];
+  //   db.collection("orders")
+  //     .get()
+  //     .then(onSnapshot => {
+  //       arr.push(
+  //         onSnapshot.forEach(function(doc) {
+  //           // doc.data() is never undefined for query doc snapshots
+  //           console.log(doc.id, " => ", doc.data());
+  //         })
+  //       );
+  //     });
+  //   return arr;
+  // }
 
-    let ordersArr = db
-      .collection("orders")
+  componentDidMount() {
+    const db = Firebase.firestore();
+    db.collection("orders")
       .get()
       .then(onSnapshot => {
-        onSnapshot.forEach(function(doc) {
-          // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, " => ", doc.data());
+        let ordersArr = [];
+        onSnapshot.forEach(doc => {
+          ordersArr.push(doc.data());
         });
-      })
-      .then(() => {
-        this.setState({ orders: ordersArr });
+        JSON.stringify(ordersArr);
+        this.setState({ orders: [{ ...ordersArr }] });
         console.log(this.state.orders);
       });
   }
 
-  componentDidMount() {
-    this.getOrders();
-  }
   render() {
     return (
       <div>
         <h3>Pedidos</h3>
-        <Button name="Hello there!" action={this.getOrders} />
+        <Button
+          name="Hello there!"
+          action={() => {
+            // this.setState({ orders: this.getOrders() });
+            console.log(Object.values(this.state.orders[0]));
+          }}
+        />
         <p>This isn't working yet, sorry for the inconvenience!</p>
+        {this.state.orders.map((element, i) => {
+          console.log(element.done);
+          return (
+            <div key={i}>
+              <p>Mesa No. {element[0].table}</p>
+              <p />
+            </div>
+          );
+        })}
       </div>
     );
   }
 }
 
 export default Orders;
+
+// componentDidMount() {
+//   this.setState({ loading: true });
+
+//   this.unsubscribe = this.props.firebase
+//     .users()
+//     .onSnapshot(snapshot => {
+//       let users = [];
+
+//       snapshot.forEach(doc =>
+//         users.push({ ...doc.data(), uid: doc.id }),
+//       );
+
+//       this.setState({
+//         users,
+//         loading: false,
+//       });
+//     });
+// }
