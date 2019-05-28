@@ -34,37 +34,40 @@ class Orders extends Component {
         let ordersArr = [];
         onSnapshot.forEach(doc => {
           ordersArr.push(doc.data());
+          this.setState({ orders: { ...doc.data() } });
         });
-        // console.log(Object.values(ordersArr));
-        this.setState({ orders: [{ ...Object.values(ordersArr) }] });
+        console.log(this.state.orders);
+        console.log(ordersArr);
+        // this.setState({ orders: [{ ...Object.values(ordersArr) }] });
         // console.log(this.state.orders);
       });
   }
 
   render() {
     return (
-      <div>
+      <section>
         <h3>Pedidos</h3>
         <Button
           name="Hello there!"
           action={() => {
             // this.setState({ orders: this.getOrders() });
-            console.log(Object.values(this.state.orders[0]));
-            // console.log(this.state.orders);
+            // console.log(Object.values(this.state.orders[0]));
+            console.log(this.state.orders);
           }}
         />
         {/* {(ordersOK = Object.values(this.state.orders))} */}
         <p>This isn't working yet, sorry for the inconvenience!</p>
-        {this.state.orders.map((element, i) => {
+        {Object.values(this.state.orders).map((element, i) => {
           // console.log(element.done);
           return (
             <div key={i}>
-              <p>Mesa No. {element[0].table}</p>
+              {/* {console.log(element)} */}
+
               <p />
             </div>
           );
         })}
-      </div>
+      </section>
     );
   }
 }

@@ -6,7 +6,7 @@ const Order = props => {
 
   return (
     <section className="order">
-      <h3>Pedido</h3>
+      <h3>Nuevo Pedido</h3>
       <div className="table-box">
         <label>Mesa No: </label>
         <input onChange={props.onChangeTable} type="text" value={props.table} />

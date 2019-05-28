@@ -4,7 +4,7 @@ const Counter = props => {
   return (
     <div className="item">
       <div>
-        {props.name} ${props.price}
+        {props.name} <p className="price">${props.price}</p>
       </div>
       <p className="cant">Cant: {props.qty}</p>
       <div>
