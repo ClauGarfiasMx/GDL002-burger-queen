@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Lora:400,700|Fjalla+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lora:400,700|Parisienne|Fjalla+One&display=swap");
 
 body {
   margin: 0;
@@ -42,9 +42,8 @@ header {
   background: #00000061;
 }
 .main-title {
-  font-family: "Lora", serif;
-  text-transform: none;
-  background-color: #000000a1;
+  font-family: "Fjalla One", sans-serif;
+
   font-weight: 500;
   padding: 1rem 3rem;
 }
@@ -83,7 +82,7 @@ button img {
   display: flex;
   flex-direction: row;
 }
-.flex-center {
+.home-flex-center {
   height: 100vh;
   padding: 0;
   margin: 0;
@@ -94,6 +93,20 @@ button img {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+.home-flex-center h2 {
+  font-family: "Parisienne", cursive;
+  text-transform: none;
+  color: #ffff;
+  margin-top: 0.5rem;
+  font-weight: 100;
+}
+
+.home-flex-center div {
+  background-color: #000000a1;
+  text-align: center;
+  padding-top: 1.25rem;
 }
 
 nav li {
