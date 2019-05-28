@@ -6,7 +6,7 @@ class Orders extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // orders: []
+      ordersArr: []
     };
   }
 
@@ -52,14 +52,16 @@ class Orders extends Component {
         />
 
         <p>This isn't working yet, sorry for the inconvenience!</p>
-        {/* 
+
         {this.state.ordersArr.map((element, i) => {
           return (
             <div key={i}>
-              <p />
+              <p>Mesa:{element.table}</p>
+              <p>Notas para Chef:{element.notes}</p>
+              <p>{element.items.name}</p>
             </div>
           );
-        })} */}
+        })}
       </section>
     );
   }
