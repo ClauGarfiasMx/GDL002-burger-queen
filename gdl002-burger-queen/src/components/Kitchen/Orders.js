@@ -6,7 +6,7 @@ class Orders extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      orders: []
+      // orders: []
     };
   }
 
@@ -34,12 +34,9 @@ class Orders extends Component {
         let ordersArr = [];
         onSnapshot.forEach(doc => {
           ordersArr.push(doc.data());
-          this.setState({ orders: { ...doc.data() } });
+          this.setState({ ordersArr });
         });
-        console.log(this.state.orders);
-        console.log(ordersArr);
-        // this.setState({ orders: [{ ...Object.values(ordersArr) }] });
-        // console.log(this.state.orders);
+        console.log(this.state.ordersArr);
       });
   }
 
@@ -50,23 +47,19 @@ class Orders extends Component {
         <Button
           name="Hello there!"
           action={() => {
-            // this.setState({ orders: this.getOrders() });
-            // console.log(Object.values(this.state.orders[0]));
-            console.log(this.state.orders);
+            console.log(this.state.ordersArr);
           }}
         />
-        {/* {(ordersOK = Object.values(this.state.orders))} */}
+
         <p>This isn't working yet, sorry for the inconvenience!</p>
-        {Object.values(this.state.orders).map((element, i) => {
-          // console.log(element.done);
+        {/* 
+        {this.state.ordersArr.map((element, i) => {
           return (
             <div key={i}>
-              {/* {console.log(element)} */}
-
               <p />
             </div>
           );
-        })}
+        })} */}
       </section>
     );
   }
