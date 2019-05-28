@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Lora:400,700|Parisienne|Fjalla+One&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lora:400,700|Satisfy|Fjalla+One&display=swap");
 
 body {
   margin: 0;
@@ -96,11 +96,12 @@ button img {
   flex-direction: column;
 }
 .home-flex-center h2 {
-  font-family: "Parisienne", cursive;
+  font-family: "Satisfy", cursive;
   text-transform: none;
   color: #ffff;
   margin-top: 0.5rem;
   font-weight: 100;
+  font-size: 1.85rem;
 }
 
 .home-flex-center div {

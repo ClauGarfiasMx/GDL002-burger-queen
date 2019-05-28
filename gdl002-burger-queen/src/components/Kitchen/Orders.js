@@ -35,9 +35,9 @@ class Orders extends Component {
         onSnapshot.forEach(doc => {
           ordersArr.push(doc.data());
         });
-        console.log(Object.values(ordersArr));
+        // console.log(Object.values(ordersArr));
         this.setState({ orders: [{ ...Object.values(ordersArr) }] });
-        console.log(this.state.orders);
+        // console.log(this.state.orders);
       });
   }
 
@@ -49,7 +49,7 @@ class Orders extends Component {
           name="Hello there!"
           action={() => {
             // this.setState({ orders: this.getOrders() });
-            // console.log(Object.values(this.state.orders[0]));
+            console.log(Object.values(this.state.orders[0]));
             // console.log(this.state.orders);
           }}
         />
