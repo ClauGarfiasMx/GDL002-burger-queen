@@ -27,21 +27,6 @@ class Orders extends Component {
         });
       });
   }
-  componentDidMount() {
-    this.state.db
-      .collection("orders")
-      .where("status", "==", "new")
-      .get()
-      .then(onSnapshot => {
-        const ordersArr = [];
-        onSnapshot.forEach(doc => {
-          const incomingOrders = { orderID: doc.id, orderDetail: doc.data() };
-          ordersArr.push(incomingOrders);
-          this.setState({ ordersArr });
-          console.log(this.state.ordersArr);
-        });
-      });
-  }
 
   getCollectionRealtime() {
     this.state.db
@@ -72,6 +57,10 @@ class Orders extends Component {
         console.error("Error writing document: ", error);
       });
   };
+
+  componentDidMount() {
+    this.getCollection();
+  }
 
   render() {
     return (
