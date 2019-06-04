@@ -10,9 +10,23 @@ class Orders extends Component {
       cities: [],
       db: Firebase.firestore()
     };
-    this.getCollection = this.getCollection.bind(this);
+    this.getCollectionRealtime = this.getCollectionRealtime.bind(this);
   }
-
+  getCollection() {
+    this.state.db
+      .collection("orders")
+      .where("status", "==", "new")
+      .get()
+      .then(onSnapshot => {
+        const ordersArr = [];
+        onSnapshot.forEach(doc => {
+          const incomingOrders = { orderID: doc.id, orderDetail: doc.data() };
+          ordersArr.push(incomingOrders);
+          this.setState({ ordersArr });
+          console.log(this.state.ordersArr);
+        });
+      });
+  }
   componentDidMount() {
     this.state.db
       .collection("orders")
@@ -29,11 +43,11 @@ class Orders extends Component {
       });
   }
 
-  getCollection() {
+  getCollectionRealtime() {
     this.state.db
       .collection("orders")
       .where("status", "==", "new")
-      .onSnapshot(function(querySnapshot) {
+      .onSnapshot(querySnapshot => {
         var cities = [];
         querySnapshot.forEach(function(doc) {
           const incomingOrders = { orderID: doc.id, orderDetail: doc.data() };
@@ -41,7 +55,6 @@ class Orders extends Component {
           this.setState({ cities });
           console.log(this.state.cities);
         });
-        // console.log("Current cities in CA: ", cities.join(", "));
       });
   }
 
@@ -63,13 +76,14 @@ class Orders extends Component {
   render() {
     return (
       <section>
+        <Button
+          name="Console log Collection"
+          action={() => {
+            this.getCollectionRealtime();
+          }}
+        />
         <h3> Pedidos </h3>
         <div className="kitchen-orders">
-          <Button
-            action={() => {
-              this.getCollection();
-            }}
-          />
           {this.state.ordersArr.map((element, i) => {
             return (
               <div id={element.orderID} key={i} className="item-kitchen">
@@ -96,6 +110,7 @@ class Orders extends Component {
                   name="Preparando"
                   action={() => {
                     this.changeToPreparing(element.orderID);
+                    this.getCollection();
                   }}
                 />
               </div>
