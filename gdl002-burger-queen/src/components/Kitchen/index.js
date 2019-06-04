@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Orders from "./Orders";
+import Orders from "./KitchenOrders";
 
 // const Kitchen = () => (
 //   <main>

@@ -194,6 +194,49 @@ nav a:hover {
   display: inline-block;
 }
 
+.item-kitchen {
+  font-family: "Fjalla One", sans-serif;
+  text-transform: uppercase;
+
+  width: 16rem;
+  height: auto;
+  margin: 0.5rem;
+  font-weight: 400;
+  float: left;
+  border: 1px solid #b3b3b3;
+  border-radius: 5px;
+  font-size: 1.45rem;
+  padding: 1rem;
+}
+
+.item-kitchen p {
+  font-family: "Lora", serif;
+  text-transform: none;
+  font-weight: 100;
+  font-size: 1rem;
+  padding-bottom: 2rem;
+  margin-top: 1.5rem;
+  padding: 0.15rem;
+  margin: 0.15rem;
+  text-align: left;
+  background-color: #fff;
+}
+
+.item-kitchen button {
+  padding: 0 1rem 0.35rem 1rem;
+}
+
+.item-order {
+  padding: 0.15rem;
+  margin: 0 0.25rem 0 0;
+  font-family: "Fjalla One", sans-serif;
+  text-decoration: none;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
 .order-box {
   padding: 1rem;
   margin: 0.75rem 0;

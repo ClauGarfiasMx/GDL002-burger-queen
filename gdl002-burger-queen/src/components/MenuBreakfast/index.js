@@ -9,9 +9,9 @@ class MenuBreakfast extends Component {
     super();
     this.state = {
       menuB,
-      done: false,
       notes: "",
       orderID: "",
+      status: "",
       table: "",
       total: 0
     };
@@ -76,9 +76,9 @@ class MenuBreakfast extends Component {
 
     db.collection("orders")
       .add({
-        done: this.state.done,
         items: itemArr,
         notes: this.state.notes,
+        status: "new",
         table: this.state.table,
         total: this.sumTotal()
       })
