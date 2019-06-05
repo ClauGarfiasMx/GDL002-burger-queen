@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b3887d96f1cb1465628009d1f2ef9127",
+    "revision": "108d9400965fd549677650001fc3ccbb",
     "url": "/gdl002-burger-queen/index.html"
   },
   {
-    "revision": "3cd2edeed8fc96dd63f0",
+    "revision": "37975abd26010fdcbc5d",
     "url": "/gdl002-burger-queen/static/css/main.8f4e5a6d.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/gdl002-burger-queen/static/js/2.0db0ac40.chunk.js"
   },
   {
-    "revision": "3cd2edeed8fc96dd63f0",
-    "url": "/gdl002-burger-queen/static/js/main.deb71220.chunk.js"
+    "revision": "37975abd26010fdcbc5d",
+    "url": "/gdl002-burger-queen/static/js/main.d4f2fcd8.chunk.js"
   },
   {
     "revision": "abf1e5c4314e6441e9d2",
