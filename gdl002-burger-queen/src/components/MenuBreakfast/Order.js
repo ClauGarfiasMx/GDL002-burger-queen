@@ -3,7 +3,6 @@ import Button from "../Button";
 
 const Order = props => {
   const menuB = props.menuB;
-
   return (
     <section className="order">
       <h3>Nuevo Pedido</h3>

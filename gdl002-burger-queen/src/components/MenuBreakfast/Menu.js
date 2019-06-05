@@ -4,7 +4,6 @@ import Counter from "../Counter";
 
 const Menu = props => {
   const menuB = props.menuB;
-
   return (
     <section className="menu">
       <h3>Menú Desayuno</h3>

@@ -209,14 +209,13 @@ nav a:hover {
 .item-kitchen {
   font-family: "Fjalla One", sans-serif;
   text-transform: uppercase;
-
   width: 16rem;
   margin: 0.5rem 0.5rem 0.5rem 0;
   font-weight: 400;
   float: left;
   border: 1px solid #b3b3b3;
   border-radius: 5px;
-  font-size: 1.45rem;
+  font-size: 1.25rem;
   padding: 1rem;
 }
 
@@ -243,6 +242,15 @@ nav a:hover {
 .item-prep button:hover {
   background-color: #fff;
   color: #000;
+}
+
+.ready-msg {
+  margin-bottom: 1rem;
+  background-color: #ffbc05;
+  padding: 0.25rem 0.5rem;
+  border-radius: 5px;
+  line-height: 3.5rem;
+  font-size: 1.45rem;
 }
 
 .item-order {

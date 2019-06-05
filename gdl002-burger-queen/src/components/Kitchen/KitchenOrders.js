@@ -12,21 +12,6 @@ class Orders extends Component {
     };
   }
 
-  getOrders(status, arr) {
-    this.state.db
-      .collection("orders")
-      .where("status", "==", `${status}`)
-      .onSnapshot(querySnapshot => {
-        var newOrders = [];
-        querySnapshot.forEach(doc => {
-          const incomingOrders = { orderID: doc.id, orderDetail: doc.data() };
-          newOrders.push(incomingOrders);
-          this.setState({ arr });
-          console.log(this.state.arr);
-        });
-      });
-  }
-
   getNewOrders() {
     this.state.db
       .collection("orders")
@@ -72,7 +57,7 @@ class Orders extends Component {
   // getOrders(status, arr) {
   //   this.state.db
   //     .collection("orders")
-  //     .where("status", "==", "new")
+  //     .where("status", "==", `${status}`)
   //     .onSnapshot(querySnapshot => {
   //       var newOrders = [];
   //       querySnapshot.forEach(doc => {
