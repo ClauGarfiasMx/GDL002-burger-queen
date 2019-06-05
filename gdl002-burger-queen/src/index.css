@@ -194,13 +194,24 @@ nav a:hover {
   display: inline-block;
 }
 
+.kitchen-orders {
+  display: flex;
+}
+
+.orders {
+  padding: 1rem;
+  width: 50%;
+}
+.border-right {
+  border-right: 1px solid #b3b3b3;
+}
+
 .item-kitchen {
   font-family: "Fjalla One", sans-serif;
   text-transform: uppercase;
 
   width: 16rem;
-  height: auto;
-  margin: 0.5rem;
+  margin: 0.5rem 0.5rem 0.5rem 0;
   font-weight: 400;
   float: left;
   border: 1px solid #b3b3b3;
@@ -219,11 +230,19 @@ nav a:hover {
   padding: 0.15rem;
   margin: 0.15rem;
   text-align: left;
-  background-color: #fff;
 }
 
 .item-kitchen button {
   padding: 0 1rem 0.35rem 1rem;
+}
+
+.item-prep {
+  background-color: #ffbc05;
+}
+
+.item-prep button:hover {
+  background-color: #fff;
+  color: #000;
 }
 
 .item-order {
