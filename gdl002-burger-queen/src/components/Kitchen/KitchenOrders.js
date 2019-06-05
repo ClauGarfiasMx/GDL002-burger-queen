@@ -8,21 +8,49 @@ class Orders extends Component {
     this.state = {
       newOrders: [],
       prepOrders: [],
-      tryArr: [],
       db: Firebase.firestore()
     };
   }
 
-  getNewOrders() {
+  // getNewOrders() {
+  //   this.state.db
+  //     .collection("orders")
+  //     .where("status", "==", "new")
+  //     .onSnapshot(querySnapshot => {
+  //       var newOrders = [];
+  //       querySnapshot.forEach(doc => {
+  //         const incomingOrders = { orderID: doc.id, orderDetail: doc.data() };
+  //         newOrders.push(incomingOrders);
+  //         this.setState({ newOrders });
+  //       });
+  //     });
+  // }
+
+  // getPrepOrders() {
+  //   this.state.db
+  //     .collection("orders")
+  //     .where("status", "==", "prep")
+  //     .onSnapshot(querySnapshot => {
+  //       var prepOrders = [];
+  //       querySnapshot.forEach(doc => {
+  //         const incomingOrders = { orderID: doc.id, orderDetail: doc.data() };
+  //         prepOrders.push(incomingOrders);
+  //         this.setState({ prepOrders });
+  //       });
+  //     });
+  // }
+  getOrders(status, arr) {
+    // console.log(arr);
     this.state.db
       .collection("orders")
-      .where("status", "==", "new")
+      .where("status", "==", status)
       .onSnapshot(querySnapshot => {
-        var newOrders = [];
         querySnapshot.forEach(doc => {
           const incomingOrders = { orderID: doc.id, orderDetail: doc.data() };
-          newOrders.push(incomingOrders);
-          this.setState({ newOrders });
+          arr.push(incomingOrders);
+          this.setState({
+            arr
+          });
         });
       });
   }
@@ -41,39 +69,12 @@ class Orders extends Component {
         console.error("Error writing document: ", error);
       });
   };
-  getPrepOrders() {
-    this.state.db
-      .collection("orders")
-      .where("status", "==", "prep")
-      .onSnapshot(querySnapshot => {
-        var prepOrders = [];
-        querySnapshot.forEach(doc => {
-          const incomingOrders = { orderID: doc.id, orderDetail: doc.data() };
-          prepOrders.push(incomingOrders);
-          this.setState({ prepOrders });
-        });
-      });
-  }
 
-  getOrders(status, arr) {
-    this.state.db
-      .collection("orders")
-      .where("status", "==", `${status}`)
-      .onSnapshot(querySnapshot => {
-        var newOrders = [];
-        querySnapshot.forEach(doc => {
-          const incomingOrders = { orderID: doc.id, orderDetail: doc.data() };
-          newOrders.push(incomingOrders);
-          this.setState({ arr });
-          console.log(this.state.arr);
-        });
-      });
-  }
   componentDidMount() {
-    this.getNewOrders();
-    this.getPrepOrders();
-    this.getOrders("new", this.state.tryArr);
-    // this.getOrders("prep", "prepOrders");
+    // this.getNewOrders();
+    // this.getPrepOrders();
+    this.getOrders("new", this.state.newOrders);
+    this.getOrders("prep", this.state.prepOrders);
   }
 
   render() {
