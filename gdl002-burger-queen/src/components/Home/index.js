@@ -27,7 +27,7 @@ class Home extends Component {
     return (
       <div className="home-flex-center">
         <div>
-          <h1 className="main-title">hi, burger queen is here!</h1>
+          <h1 className="main-title">hello, burger queen is here!</h1>
           <h2>a laboratoria project by claudia garfias</h2>
         </div>
       </div>
