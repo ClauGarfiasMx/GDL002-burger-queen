@@ -31,6 +31,9 @@ h1 {
   padding: 2rem 0 3rem 1rem;
   color: #fff;
 }
+h3 {
+  text-decoration: underline;
+}
 
 header {
   background-image: url("https://images.pexels.com/photos/2271106/pexels-photo-2271106.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500");
@@ -67,7 +70,7 @@ section {
 
 button {
   border-radius: 3px;
-  background-color: #484848;
+  background-color: #000;
   color: #ffff;
   border: none;
   font-family: "Fjalla One", sans-serif;
@@ -78,6 +81,7 @@ button {
 
 button:hover {
   background-color: #ffbc05;
+  color: #484848;
   border: none;
 }
 
@@ -138,6 +142,7 @@ nav a:hover {
   width: 60%;
   padding: 1rem;
   display: inline-block;
+  margin-top: 1rem;
 }
 
 .item-container {
@@ -192,6 +197,7 @@ nav a:hover {
   width: 40%;
   padding: 1rem;
   display: inline-block;
+  margin-top: 1rem;
 }
 
 .kitchen-orders {
@@ -215,7 +221,7 @@ nav a:hover {
   float: left;
   border: 1px solid #b3b3b3;
   border-radius: 5px;
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   padding: 1rem;
 }
 
@@ -224,11 +230,8 @@ nav a:hover {
   text-transform: none;
   font-weight: 100;
   font-size: 1rem;
-  padding-bottom: 2rem;
-  margin-top: 1.5rem;
-  padding: 0.15rem;
-  margin: 0.15rem;
   text-align: left;
+  font-size: 1.15rem;
 }
 
 .item-kitchen button {
@@ -236,18 +239,29 @@ nav a:hover {
 }
 
 .item-prep {
-  background-color: #ffbc05;
+  border: 4px solid #ffbc05;
 }
 
-.item-prep button:hover {
+.new-order {
+  border: 4px solid #ffbc05;
+  border-radius: 10px;
+  padding: 1rem;
+}
+
+/* .item-prep button {
   background-color: #fff;
   color: #000;
 }
 
+.item-prep button:hover {
+  background-color: #484848;
+  color: #fff;
+} */
+
 .ready-msg {
   margin-bottom: 1rem;
-  background-color: #ffbc05;
-  padding: 0.25rem 0.5rem;
+  border: 4px solid #ffbc05;
+  padding: 0.25rem;
   border-radius: 5px;
   line-height: 3.5rem;
   font-size: 1.45rem;

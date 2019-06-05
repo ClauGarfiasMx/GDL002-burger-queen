@@ -8,6 +8,7 @@ class Orders extends Component {
     this.state = {
       newOrders: [],
       prepOrders: [],
+      tryArr: [],
       db: Firebase.firestore()
     };
   }
@@ -54,24 +55,24 @@ class Orders extends Component {
       });
   }
 
-  // getOrders(status, arr) {
-  //   this.state.db
-  //     .collection("orders")
-  //     .where("status", "==", `${status}`)
-  //     .onSnapshot(querySnapshot => {
-  //       var newOrders = [];
-  //       querySnapshot.forEach(doc => {
-  //         const incomingOrders = { orderID: doc.id, orderDetail: doc.data() };
-  //         newOrders.push(incomingOrders);
-  //         this.setState({ arr });
-  //         console.log(this.state.arr);
-  //       });
-  //     });
-  // }
+  getOrders(status, arr) {
+    this.state.db
+      .collection("orders")
+      .where("status", "==", `${status}`)
+      .onSnapshot(querySnapshot => {
+        var newOrders = [];
+        querySnapshot.forEach(doc => {
+          const incomingOrders = { orderID: doc.id, orderDetail: doc.data() };
+          newOrders.push(incomingOrders);
+          this.setState({ arr });
+          console.log(this.state.arr);
+        });
+      });
+  }
   componentDidMount() {
     this.getNewOrders();
     this.getPrepOrders();
-    // this.getOrders("new", "newOrders");
+    this.getOrders("new", this.state.tryArr);
     // this.getOrders("prep", "prepOrders");
   }
 
@@ -79,7 +80,7 @@ class Orders extends Component {
     return (
       <section className="kitchen-orders">
         <div className="orders border-right">
-          <h3> Pedidos Nuevos </h3>
+          <h3> Órdenes Nuevas </h3>
           <div>
             {this.state.newOrders.map((element, i) => {
               return (

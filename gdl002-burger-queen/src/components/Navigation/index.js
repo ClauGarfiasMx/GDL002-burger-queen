@@ -12,10 +12,10 @@ const Navigation = () => (
         <Link to={ROUTES.ORDER}>Crear Orden</Link>
       </li>
       <li>
-        <Link to={ROUTES.KITCHEN}>Pedidos a Cocina</Link>
+        <Link to={ROUTES.KITCHEN}>Órdenes en Cocina</Link>
       </li>
       <li>
-        <Link to={ROUTES.SENT}>Enviado</Link>
+        <Link to={ROUTES.SENT}>Órdenes Listas</Link>
       </li>
     </ul>
   </nav>
