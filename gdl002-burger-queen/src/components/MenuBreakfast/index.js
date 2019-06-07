@@ -21,9 +21,7 @@ class MenuBreakfast extends Component {
     let initial = { menuB, table: "", notes: "", total: 0 };
     return initial;
   }
-  componentDidMount() {
-    document.body.classList.remove("home-container");
-  }
+
   handleIncrement = idx => {
     const nextState = this.state;
     nextState.menuB[idx].qty++;
@@ -86,8 +84,19 @@ class MenuBreakfast extends Component {
         this.setState({ orderID: docRef.id });
         console.log(this.state.orderID);
       })
-      .then(() => this.setState({ ...this.initialState() }));
+      .then(() => {
+        if (this.mounted) {
+          this.setState({ ...this.initialState() });
+        }
+      });
   };
+  componentDidMount() {
+    document.body.classList.remove("home-container");
+    this.mounted = true;
+  }
+  componentWillMount() {
+    this.mounted = false;
+  }
 
   render() {
     return (

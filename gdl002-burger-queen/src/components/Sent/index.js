@@ -17,12 +17,12 @@ class Sent extends Component {
       .where("status", "==", "ready")
       .onSnapshot(querySnapshot => {
         var readyOrders = [];
-        querySnapshot.forEach(doc => {
-          const incomingOrders = { orderID: doc.id, orderDetail: doc.data() };
+
+        querySnapshot.docs.map(e => {
+          const incomingOrders = { orderID: e.id, orderDetail: e.data() };
           readyOrders.push(incomingOrders);
-          this.setState({ readyOrders });
         });
-        console.log(this.state.readyOrders);
+        this.setState({ readyOrders });
       });
   }
 
